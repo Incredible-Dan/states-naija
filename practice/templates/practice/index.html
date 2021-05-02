@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>States and Capitals in Nigeria</title>
+</head>
+<body>
+{% block content %}
+    <ol>
+    {% for state in states %}
+    <li>
+        <p>{{ state.state_text }}</p>
+        <ol>
+            {% for capital in state.capital_set.all %}
+            <li>{{ capital.capital_text }}</li>
+            {% endfor %}
+        </ol>
+        <ol>
+            {% for region in state.region_set.all %}
+                <li>{{ region.region_text }}</li>
+            {% endfor %}
+        </ol>
+        <ol>
+            {% for tribe in state.tribe_set.all %}
+            <li>{{ tribe.tribe_text }}</li>
+            {% endfor %}
+        </ol>
+    </li>
+    {% endfor %}
+    </ol>
+{% endblock content %}
+</body>
+</html>
